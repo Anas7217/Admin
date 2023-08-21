@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <title>Feedback App</title>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    .feedback-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        background-color: #fff;
+    }
+
+    .feedback-container h1 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+     .feedback-list-item {
+        border-top: 1px solid #ddd;
+        padding: 10px 0;
+    }
+
+    .feedback-list-item strong {
+        display: block;
+        font-size: 18px;
+        margin-bottom: 5px;
+    }
+
+    .feedback-list-item span {
+        font-size: 16px;
+        color: #555;
+    }
+
+    .feedback-list-item hr {
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+
+    #feedback-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .feedback-row {
+        border-bottom: 1px solid #ddd;
+    }
+
+    .label,
+    .value {
+        padding: 10px;
+    }
+
+    .label {
+        width: 100px;
+        font-weight: bold;
+    } 
+
+    hr {
+        border: none;
+        border-top: 1px solid #ddd;
+        margin: 10px 0;
+    }
+</style>
+
+<body>
+    <div class="feedback-container">
+        <h1>Feedback</h1>
+       
+        <table id="feedback-table">
+            <% feedbackData.forEach(feedback=> { %>
+                <tr class="feedback-row">
+                    <td class="label">Name:</td>
+                    <td class="value">
+                        <%= feedback.name %>
+                    </td>
+                </tr>
+                <tr class="feedback-row">
+                    <td class="label">Email:</td>
+                    <td class="value">
+                        <%= feedback.email %>
+                    </td>
+                </tr>
+                <tr class="feedback-row">
+                    <td class="label">Phone:</td>
+                    <td class="value">
+                        <%= feedback.phoneNo %>
+                    </td>
+                </tr>
+                <tr class="feedback-row">
+                    <td class="label">Subject:</td>
+                    <td class="value">
+                        <%= feedback.subject %>
+                    </td>
+                </tr>
+                <tr class="feedback-row">
+                    <td class="label">Message:</td>
+                    <td class="value">
+                        <%= feedback.message %>
+                    </td>
+                </tr>
+                <tr class="feedback-row">
+                    <td class="label">Timestamp:</td>
+                    <td class="value">
+                        <%= new Date(feedback.timestamp).toLocaleString() %>
+                    </td>
+                </tr>
+                <tr class="feedback-row">
+                    <td colspan="3">
+                        <hr>
+                    </td>
+                </tr>
+                <% }); %>
+        </table>
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,113 @@
+<!-- 
+
+<h1> Sign up form </h1>
+
+<form action="/register" method="POST">
+	<input type="text" name="username"
+		placeholder="enter your email">
+	<input type="password" name="password"
+		placeholder="password">
+	<button>Submit</button>
+</form>
+
+<h1>This is home page</h1>
+
+<li><a href="/register">Sign up!!</a></li>
+<li><a href="/login">Login</a></li>
+<li><a href="/logout">Logout</a></li> -->
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+    h1 {
+      color: #333;
+      margin-top: 20px;
+    }
+    form {
+      max-width: 300px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+    button {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    li {
+      margin: 10px 0;
+    }
+    a {
+      text-decoration: none;
+      color: #007bff;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+  <script>
+    function validateForm() {
+      var username = document.forms["signupForm"]["username"].value;
+      var password = document.forms["signupForm"]["password"].value;
+      if (username === "" || password === "") {
+        alert("Both email and password must be filled out");
+        return false;
+      }
+      if (!isValidEmail(username)) {
+        alert("Please enter a valid email address");
+        return false;
+      }
+    }
+
+    function isValidEmail(email) {
+      // A simple email validation pattern
+      var pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return pattern.test(email);
+    }
+  </script>
+</head>
+<body>
+  <h1>Sign up form</h1>
+  <form name="signupForm" action="/register" method="POST" onsubmit="return validateForm()">
+    <input type="text" name="username" placeholder="Enter your email">
+    <input type="password" name="password" placeholder="Password">
+    <button type="submit">Submit</button>
+  </form>
+  <h1>This is home page</h1>
+  <ul>
+    <li><a href="/register">Sign up!!</a></li>
+    <li><a href="/login">Login</a></li>
+    <li><a href="/logout">Logout</a></li>
+  </ul>
+</body>
+</html>
+
