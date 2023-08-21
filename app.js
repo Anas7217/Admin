@@ -10,8 +10,14 @@ var express = require("express"),
     
 
 const { User, FixLaptop } = require("./model/User");
+const path=require("path")
 const port = process.env.PORT || 3000; 
 var app = express();
+
+
+// console.log(__dirname)
+app.use(express.static(path.join(__dirname, 'public'))); 
+
 
 // Update the Atlas URI and database name
 const atlasUri =process.env.MONGO_URL;
@@ -20,7 +26,7 @@ mongoose.connect(atlasUri, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
-
+  
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(require("express-session")({

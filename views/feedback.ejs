@@ -4,126 +4,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="styles.css"> -->
-    <title>Feedback App</title>
+    <link rel="icon" href="/images/img-logo.jpg" type="image/x-icon" />
+
+    <title>Feedback</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        .feedback-container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            background-color: #fff;
+        }
+
+        .feedback-container h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        #feedback-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .feedback-row {
+            border-bottom: 1px solid #ddd;
+            background-color: #fff;
+        }
+
+        .feedback-row:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .label {
+            font-weight: bold;
+            padding: 10px;
+            width: 20%;
+            vertical-align: top;
+        }
+
+        .value {
+            padding: 10px;
+            width: 80%;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #ddd;
+            margin: 10px 0;
+        }
+
+        .feedback-row:hover {
+            background-color: #e0e0e0;
+            cursor: pointer;
+        }
+
+        /* Style the header row */
+        #feedback-table thead {
+            background-color: #333;
+            color: white;
+        }
+
+        /* Style the timestamp cell */
+        .value.timestamp {
+            font-style: italic;
+            color: #666;
+        }
+    </style>
 </head>
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-    }
-
-    .feedback-container {
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 20px;
-        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-        background-color: #fff;
-    }
-
-    .feedback-container h1 {
-        text-align: center;
-        margin-bottom: 20px;
-    }
-
-     .feedback-list-item {
-        border-top: 1px solid #ddd;
-        padding: 10px 0;
-    }
-
-    .feedback-list-item strong {
-        display: block;
-        font-size: 18px;
-        margin-bottom: 5px;
-    }
-
-    .feedback-list-item span {
-        font-size: 16px;
-        color: #555;
-    }
-
-    .feedback-list-item hr {
-        margin-top: 10px;
-        margin-bottom: 20px;
-    }
-
-    #feedback-table {
-        width: 100%;
-        border-collapse: collapse;
-    }
-
-    .feedback-row {
-        border-bottom: 1px solid #ddd;
-    }
-
-    .label,
-    .value {
-        padding: 10px;
-    }
-
-    .label {
-        width: 100px;
-        font-weight: bold;
-    } 
-
-    hr {
-        border: none;
-        border-top: 1px solid #ddd;
-        margin: 10px 0;
-    }
-</style>
 
 <body>
     <div class="feedback-container">
         <h1>Feedback</h1>
-       
+
         <table id="feedback-table">
-            <% feedbackData.forEach(feedback=> { %>
-                <tr class="feedback-row">
-                    <td class="label">Name:</td>
-                    <td class="value">
-                        <%= feedback.name %>
-                    </td>
+            <thead>
+                <tr>
+                    <th class="label">Name</th>
+                    <th class="label">Email</th>
+                    <th class="label">Phone</th>
+                    <th class="label">Subject</th>
+                    <th class="label">Message</th>
+                    <th class="label">Timestamp</th>
                 </tr>
+            </thead>
+            <tbody>
+                <!-- Loop through feedbackData and generate rows -->
+                <% feedbackData.forEach(feedback => { %>
                 <tr class="feedback-row">
-                    <td class="label">Email:</td>
-                    <td class="value">
-                        <%= feedback.email %>
-                    </td>
-                </tr>
-                <tr class="feedback-row">
-                    <td class="label">Phone:</td>
-                    <td class="value">
-                        <%= feedback.phoneNo %>
-                    </td>
-                </tr>
-                <tr class="feedback-row">
-                    <td class="label">Subject:</td>
-                    <td class="value">
-                        <%= feedback.subject %>
-                    </td>
-                </tr>
-                <tr class="feedback-row">
-                    <td class="label">Message:</td>
-                    <td class="value">
-                        <%= feedback.message %>
-                    </td>
-                </tr>
-                <tr class="feedback-row">
-                    <td class="label">Timestamp:</td>
-                    <td class="value">
-                        <%= new Date(feedback.timestamp).toLocaleString() %>
-                    </td>
-                </tr>
-                <tr class="feedback-row">
-                    <td colspan="3">
-                        <hr>
-                    </td>
+                    <td class="value"><%= feedback.name %></td>
+                    <td class="value"><%= feedback.email %></td>
+                    <td class="value"><%= feedback.phoneNo %></td>
+                    <td class="value"><%= feedback.subject %></td>
+                    <td class="value"><%= feedback.message %></td>
+                    <td class="value timestamp"><%= new Date(feedback.timestamp).toLocaleString() %></td>
                 </tr>
                 <% }); %>
+            </tbody>
         </table>
-
     </div>
 </body>
 
